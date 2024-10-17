@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Engine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rule Engine</h1>
+        
+        <h2>Create Rule</h2>
+        <textarea id="ruleInput" placeholder="Enter rule here..."></textarea>
+        <button id="createRuleBtn">Create Rule</button>
+        <div id="createRuleResponse"></div>
+        
+        <h2>Evaluate Rule</h2>
+        <input type="number" id="ruleIdInput" placeholder="Rule ID">
+        <textarea id="dataInput" ></textarea>
+        <button id="evaluateRuleBtn">Evaluate Rule</button>
+        <div id="evaluateRuleResponse"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
