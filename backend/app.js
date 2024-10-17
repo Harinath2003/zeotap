@@ -2,9 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const cors = require('cors'); // Import CORS
 
 // Initialize express
 const app = express();
+app.use(cors()); // Use CORS middleware
 app.use(bodyParser.json());
 
 // MySQL Database connection
@@ -33,7 +35,7 @@ class Node {
 
 // Helper function to parse rule strings into AST
 const parseRuleString = (ruleString) => {
-    // Example parsing logic for a simple rule, you can improve it for complex rules
+    // Example parsing logic for a simple rule; you can improve it for complex rules
     let rootNode = new Node('AND');
     rootNode.left = new Node('operand', null, null, { key: 'age', comparison: '>', value: 30 });
     rootNode.right = new Node('operand', null, null, { key: 'salary', comparison: '>', value: 50000 });
@@ -61,9 +63,6 @@ const evaluateAST = (node, data) => {
     if (node.type === 'OR') return leftEval || rightEval;
     return false;
 };
-
-console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
-
 
 // API to create a rule and store it in the database
 app.post('/api/rules/create', (req, res) => {
